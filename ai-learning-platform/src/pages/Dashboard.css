@@ -1,0 +1,470 @@
+/* Dashboard.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --primary-color: #6b46c1;
+  --secondary-color: #4299e1;
+  --background-light: #f7fafc;
+  --text-dark: #2d3748;
+  --border-color: #e2e8f0;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --success-color: #38A169;
+  --warning-color: #E53E3E;
+  --neutral-color: #A0AEC0;
+}
+
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-light);
+}
+
+.dashboard {
+  min-height: 100vh;
+  padding: 2rem;
+  color: var(--text-dark);
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+  color: var(--primary-color);
+  font-weight: 700;
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: -0.025em;
+}
+
+.user-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-greeting {
+  font-weight: 600;
+}
+
+.logout-button {
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+  background-color: #c53030;
+}
+
+/* Modified: Main Grid Layout - Now three columns */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Remove the sidebar container since we're putting everything side by side */
+.dashboard-sidebar {
+  display: contents;
+}
+
+/* Cards */
+.card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: var(--card-shadow);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: calc(100% - 3rem); /* Account for padding */
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.card-header h2 {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Study Plans Section */
+.study-plans {
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+.add-button, .create-first-plan {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.add-button:hover, .create-first-plan:hover {
+  background-color: #5a3d8a;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--neutral-color);
+}
+
+.plans-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.plan-item {
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s;
+}
+
+.plan-item:hover {
+  border-color: var(--secondary-color);
+}
+
+.plan-content {
+  padding: 1rem;
+}
+
+.plan-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.plan-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.meta-label {
+  color: var(--neutral-color);
+  margin-right: 0.25rem;
+}
+
+.status-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-badge.completed {
+  background-color: rgba(56, 161, 105, 0.1);
+  color: var(--success-color);
+}
+
+.status-badge.in-progress {
+  background-color: rgba(66, 153, 225, 0.1);
+  color: var(--secondary-color);
+}
+
+.status-badge.not-started {
+  background-color: rgba(160, 174, 192, 0.1);
+  color: var(--neutral-color);
+}
+
+.status-badge.overdue {
+  background-color: rgba(229, 62, 62, 0.1);
+  color: var(--warning-color);
+}
+
+.plan-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-plan-button {
+  background-color: transparent;
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.edit-plan-button:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+/* Learning Progress Section */
+.learning-progress {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-chart {
+  height: 200px;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.progress-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.progress-percentage {
+  margin-bottom: 1rem;
+}
+
+.percentage-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.percentage-label {
+  font-size: 1rem;
+  color: var(--neutral-color);
+  margin-left: 0.5rem;
+}
+
+.plans-count {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.count-item {
+  text-align: center;
+}
+
+.count-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+
+.count-label {
+  font-size: 0.875rem;
+  color: var(--neutral-color);
+}
+
+/* Recommended Resources Section */
+.recommended-resources {
+  display: flex;
+  flex-direction: column;
+}
+
+.resource-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.resource-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--background-light);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  transition: background-color 0.2s;
+}
+
+.resource-item:hover {
+  background-color: #e6f2ff;
+}
+
+.resource-icon {
+  margin-right: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.resource-content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resource-title {
+  font-weight: 500;
+}
+
+/* Add styles for the resource links */
+.resource-link {
+  text-decoration: none;
+  display: block;
+}
+
+.explore-button {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+}
+
+.explore-button:hover {
+  background-color: #3182ce;
+}
+
+.upload-button {
+  width: 100%;
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.upload-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Loading State */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+/* Responsive Design - Updated for three columns */
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .study-plans {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 1rem;
+  }
+  
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .study-plans {
+    grid-column: span 1;
+  }
+  
+  .user-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .plan-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.dashboard {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.roadmap-button {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 12px 20px; /* Spacing */
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  display: inline-block;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.roadmap-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.roadmap-button:active {
+  background-color: #3e8e41; /* Even darker green when clicked */
+  transform: scale(0.98);
+}
