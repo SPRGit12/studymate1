@@ -29,7 +29,8 @@ const ChatBot = () => {
       // Show typing indicator
       setChat([...newChat, { sender: 'ai', text: '...', isTyping: true }]);
       
-      const res = await axios.post('/api/chat', { message: input });
+      const res = await axios.post('http://localhost:3001/api/chat', { message: input })
+
       const reply = res.data.reply || '⚠️ No response from Gemini.';
       
       // Replace typing indicator with actual response
