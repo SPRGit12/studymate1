@@ -5,6 +5,7 @@ import { CssBaseline } from '@mui/material';
 import PrivateRoute from './components/PrivateRoute';
 
 // Import pages
+import LandingPage from './components/LandingPage';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
@@ -72,6 +73,7 @@ function App() {
       <Router>
         <Routes>
           {/* Public Routes */}
+          <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           
