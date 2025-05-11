@@ -6,12 +6,13 @@ import { doc, getDoc, collection, query, where, onSnapshot } from 'firebase/fire
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import './Dashboard.css';
-// Import ChatBot from correct path - adjust this path as needed
+import UserProfile from './UserProfile';
 import ChatBot from '../components/ChatBot.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Dashboard = () => {
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
   const [learningProgress, setLearningProgress] = useState(null);
   const [recommendedResources, setRecommendedResources] = useState([]);
@@ -150,11 +151,6 @@ const Dashboard = () => {
     }
   };
 
-  // Handle resource click to open the URL in a new tab
-  const handleResourceClick = (url) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
   // Get status badge class for study plans
   const getStatusBadgeClass = (status) => {
     switch(status) {
@@ -201,10 +197,16 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <header className="dashboard-header">
-        <h1>Learning Dashboard</h1>
+        <div className="logo">StudyMate</div>
         <div className="user-controls">
           <div className="user-info">
             <span className="user-greeting">Hello, {userProfile.name || 'Learner'}</span>
+          </div>
+          <div className="profile-icon" onClick={() => setIsProfileOpen(true)}>
+            <img 
+              src={userProfile.profileUrl || "https://via.placeholder.com/40"} 
+              alt="Profile" 
+            />
           </div>
           <button 
             onClick={handleLogout}
@@ -212,19 +214,7 @@ const Dashboard = () => {
           >
             Logout
           </button>
-        </div>  
-        <button 
-          onClick={() => navigate('/roadmaps')} 
-          className="roadmap-button"
-        >
-          View Roadmaps
-        </button>
-        <button 
-          onClick={() => navigate('/roadmap')} 
-          className="roadmap-button dsa-button"
-        >
-          DSA Roadmap
-        </button>
+        </div>
       </header>
       
       <div className="dashboard-grid">
@@ -352,15 +342,39 @@ const Dashboard = () => {
               </div>
             )}
             <button 
-              onClick={() => navigate('/upload-resource')}
-              className="upload-button"
+              onClick={() => navigate('/contribute')}
+              className="contribute-button"
             >
-              Upload New Resource
+              Contribute Resources
             </button>
           </div>
           <ChatBot />
         </div>
       </div>
+      <UserProfile 
+        isOpen={isProfileOpen} 
+        onClose={() => setIsProfileOpen(false)} 
+        userId={auth.currentUser?.uid} 
+      />
+
+      {/* Adding roadmap buttons here instead of in header */}
+      <div className="roadmap">
+        <p> To transform your plans to Structured Roadmaps:</p>
+            <button 
+              onClick={() => navigate('/roadmaps')} 
+              className="roadmap-button"
+            >Roadmaps
+            </button>
+          </div>
+          <div className='DSA'>
+            <p> To get a Structured plan to learn DSA: </p>
+            <button 
+              onClick={() => navigate('/roadmap')} 
+              className="roadmap-button dsa-button"
+            >
+              DSA Roadmap
+            </button>
+          </div>
     </div>
   );
 };

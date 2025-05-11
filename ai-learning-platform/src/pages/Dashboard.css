@@ -444,6 +444,14 @@ body {
   animation: fadeIn 0.5s ease-out;
 }
 
+/* Roadmap Buttons Container */
+.roadmap-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
 .roadmap-button {
   background-color: #4CAF50; /* Green background */
   color: white; /* White text */
@@ -455,7 +463,7 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
-  display: inline-block;
+  flex: 1;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
@@ -467,4 +475,297 @@ body {
 .roadmap-button:active {
   background-color: #3e8e41; /* Even darker green when clicked */
   transform: scale(0.98);
+}
+
+.dsa-button {
+  background-color: #2196F3; /* Blue for DSA button to differentiate */
+}
+
+.dsa-button:hover {
+  background-color: #0b7dda;
+}
+
+.dsa-button:active {
+  background-color: #0a69b7;
+}
+
+/* Profile Icon */
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  margin-left: 20px;
+}
+
+.profile-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.profile-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* User Info with improved styling */
+.user-info {
+  background-color: rgba(107, 70, 193, 0.05);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.user-greeting {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Logo styling */
+.logo {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+}
+
+.logo::before {
+  content: '📚';
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+}
+
+/* ChatBot component styling */
+.chatbot-container {
+  margin-top: 1.5rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  background-color: white;
+}
+
+.chatbot-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.chatbot-toggle {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.chatbot-messages {
+  height: 250px;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  max-width: 80%;
+  padding: 0.75rem;
+  border-radius: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.bot-message {
+  background-color: var(--background-light);
+  align-self: flex-start;
+  border-bottom-left-radius: 0;
+}
+
+.user-message {
+  background-color: var(--primary-color);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 0;
+}
+
+.chatbot-input {
+  display: flex;
+  padding: 0.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.send-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.send-button:hover {
+  background-color: #5a3d8a;
+}
+
+/* Contribute button styling */
+.contribute-button {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+.contribute-button:hover {
+  background-color: #3182ce;
+  transform: translateY(-2px);
+}
+
+/* UserProfile Modal */
+.profile-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.profile-content {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--neutral-color);
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-picture {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: block;
+  object-fit: cover;
+  border: 4px solid var(--primary-color);
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text-dark);
+}
+
+.form-group input {
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.save-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+
+.save-button:hover {
+  background-color: #5a3d8a;
+}
+
+/* File upload styling */
+.file-input {
+  display: none;
+}
+
+.upload-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--background-light);
+  color: var(--primary-color);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  border: 1px dashed var(--primary-color);
+  transition: all 0.2s;
+}
+
+.upload-label:hover {
+  background-color: rgba(107, 70, 193, 0.1);
+}
+
+.upload-icon {
+  font-size: 1.25rem;
 }
